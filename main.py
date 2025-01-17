@@ -20,8 +20,22 @@ class Node:
 
 
 def shuffle(head):
-    # Your solution here!
-    pass
+    # If list is empty or has one element there is no need to shuffle
+    if head is None or head.next is None:
+        return head
+
+    # Set up variables to keep track of the new and old positions
+    old_head = head
+    # The second element becomes the new head
+    new_head = old_head.next
+    # The old head will be the second element in the new list
+    new_second = old_head
+
+    # Recursively shuffle the remaining elements (starting with the third)
+    new_second.next = shuffle(old_head.next.next)
+    new_head.next = new_second
+
+    return new_head
 
 
 # Input: a->b->c->d->e->f
