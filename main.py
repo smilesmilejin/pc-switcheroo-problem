@@ -21,7 +21,82 @@ class Node:
 
 def shuffle(head):
     # Your solution here!
-    pass
+    # pass
+
+    # even num: every time change
+    # odd num: last item self.next is None
+
+    # new_head = head
+
+    # set current with head
+
+
+    # while current exists:
+        # if current and current.next both exists
+            # switch start with current.next (current, current.next = current, current.next)
+
+            # first_node = current
+            # second_node = current.next
+
+            # if second_node = head:
+                # new_head = current.next
+
+            # first_node.next = second_node.next
+            # second_node.next = first_node
+
+
+            # move the pointer by two nodes
+
+            # current = current.next.next
+
+    # return new_head
+
+    # print('####### print linked list')
+
+    # current = head
+
+    # while current:
+    #     print(current.value)
+    #     current = current.next
+
+    # new_head = head
+
+    current = head
+    first_switch = True
+    prev = None
+
+    while current and current.next:
+        first_node = current
+        second_node = current.next
+
+        first_node.next = second_node.next
+        second_node.next = first_node
+
+        if prev:
+            prev.next = second_node
+
+        # print(f'first_node is now value: {second_node.value}, and now point to node with value: {first_node.value}')
+
+
+        if first_switch:
+            head = second_node
+            first_switch = False
+            # print(f'head is now value: {head.value},  and now point to node with value: {head.next.value}')
+
+        # current = current.next.next
+        # if first_node.next:
+            # print(f'current is moved to value: {first_node.next.value}')
+
+        current = first_node.next
+        prev = first_node
+
+        # print('####### print linked list')
+        # current_temp = head
+        # while current_temp:
+        #     print(current_temp.value)
+        #     current_temp= current_temp.next
+
+    return head
 
 
 # Input: a->b->c->d->e->f
